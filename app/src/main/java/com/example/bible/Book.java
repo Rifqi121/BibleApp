@@ -7,7 +7,11 @@ public class Book {
         this.title = title;
     }
 
-    public java.lang.String getTitle() {
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
         return title;
     }
 }
