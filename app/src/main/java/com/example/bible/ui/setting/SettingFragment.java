@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,14 +14,23 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.PreferenceFragmentCompat;
 
+import com.example.bible.ExpandableListAdapter;
 import com.example.bible.R;
 import com.example.bible.databinding.FragmentSettingBinding;
 import com.example.bible.ui.setting.SettingViewModel;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class SettingFragment extends Fragment {
 
     private SettingViewModel settingViewModel;
     private FragmentSettingBinding binding;
+    ExpandableListAdapter listAdapter;
+    ExpandableListView expListView;
+    List<String> listDataHeader;
+    HashMap<String, List<String>> listDataChild;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -30,6 +40,16 @@ public class SettingFragment extends Fragment {
         binding = FragmentSettingBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        expListView = root.findViewById(R.id.langSetting);
+
+        // preparing list data
+        prepareListData();
+
+        listAdapter = new ExpandableListAdapter(getActivity().getApplicationContext(), listDataHeader, listDataChild);
+
+        // setting list adapter
+        expListView.setAdapter(listAdapter);
+
         settingViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -37,6 +57,21 @@ public class SettingFragment extends Fragment {
             }
         });
         return root;
+    }
+
+    private void prepareListData() {
+        listDataHeader = new ArrayList<String>();
+        listDataChild = new HashMap<String, List<String>>();
+
+        // Adding child data
+        listDataHeader.add("Language");
+
+        // Adding child data
+        List<String> LanguageList = new ArrayList<String>();
+        LanguageList.add("English");
+        LanguageList.add("Russian");
+
+        listDataChild.put(listDataHeader.get(0), LanguageList);
     }
 
     @Override

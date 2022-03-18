@@ -12,4 +12,5 @@
     <string name="menu_books">Books</string>
     <string name="menu_grow">Grow</string>
     <string name="menu_setting">Setting</string>
+    <string name="language">Language</string>
 </resources>

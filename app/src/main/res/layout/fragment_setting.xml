@@ -28,7 +28,7 @@
         android:paddingHorizontal="20dp"
         android:layout_marginTop="15dp"
         android:textColor="@color/white"
-        android:text="Notify bible"
+        android:text="Prayer request"
         android:button="@null"
         android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,16 +38,14 @@
     <ExpandableListView
         android:id="@+id/langSetting"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:background="#2D2D2D"
+        android:paddingHorizontal="20dp"
         android:layout_marginTop="15dp"
         android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="0.5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/prayerRequest"/>
-
+        app:layout_constraintTop_toBottomOf="@id/prayerRequest" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
