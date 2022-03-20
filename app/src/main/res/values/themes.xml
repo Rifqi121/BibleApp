@@ -21,6 +21,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="customfontstyle" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
     <style name="Theme.Bible.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Bible.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

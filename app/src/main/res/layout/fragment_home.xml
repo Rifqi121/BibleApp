@@ -7,11 +7,12 @@
     tools:context=".ui.home.HomeFragment">
 
    <GridLayout
+       android:id="@+id/listenMenu"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:rowCount="2"
        android:columnCount="2"
-       android:layout_marginTop="15dp"
+       android:layout_marginTop="20dp"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toTopOf="parent">
@@ -29,8 +30,13 @@
            app:cardBackgroundColor="#1FB5AC"
            >
 
+           <ImageView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:background="@drawable/podcast_bg"/>
+
            <LinearLayout
-               android:layout_gravity="center_horizontal|center_vertical"
+               android:layout_gravity="center"
                android:orientation="vertical"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content">
@@ -40,7 +46,8 @@
                    android:textAlignment="center"
                    android:textSize="24sp"
                    android:layout_width="wrap_content"
-                   android:layout_height="wrap_content" />
+                   android:layout_height="wrap_content"
+                   android:textAppearance="@style/customfontstyle"/>
 
            </LinearLayout>
 
@@ -52,25 +59,30 @@
            android:layout_columnWeight="1"
            android:layout_rowWeight="1"
            android:layout_marginBottom="15dp"
-           android:layout_marginLeft="10dp"
            android:layout_marginRight="10dp"
            app:cardElevation="8dp"
            app:cardCornerRadius="4dp"
            app:cardBackgroundColor="#486DCD"
            >
 
+           <ImageView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:background="@drawable/music_bg"/>
+
            <LinearLayout
-               android:layout_gravity="center_horizontal|center_vertical"
+               android:layout_gravity="center"
                android:orientation="vertical"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content">
 
                <TextView
-                   android:text="Music \nPlayer "
+                   android:text=" Music \n Player "
                    android:textAlignment="center"
                    android:textSize="24sp"
                    android:layout_width="wrap_content"
-                   android:layout_height="wrap_content" />
+                   android:layout_height="wrap_content"
+                   android:textAppearance="@style/customfontstyle"/>
 
            </LinearLayout>
 
@@ -81,7 +93,6 @@
            android:layout_height="250dp"
            android:layout_columnWeight="1"
            android:layout_rowWeight="1"
-           android:layout_marginBottom="15dp"
            android:layout_marginLeft="10dp"
            android:layout_marginRight="10dp"
            app:cardElevation="8dp"
@@ -89,8 +100,13 @@
            app:cardBackgroundColor="#A246CD"
            >
 
+           <ImageView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:background="@drawable/sermons_bg"/>
+
            <LinearLayout
-               android:layout_gravity="center_horizontal|center_vertical"
+               android:layout_gravity="center"
                android:orientation="vertical"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content">
@@ -100,7 +116,8 @@
                    android:textAlignment="center"
                    android:textSize="24sp"
                    android:layout_width="wrap_content"
-                   android:layout_height="wrap_content" />
+                   android:layout_height="wrap_content"
+                   android:textAppearance="@style/customfontstyle"/>
 
            </LinearLayout>
 
@@ -111,30 +128,42 @@
            android:layout_height="250dp"
            android:layout_columnWeight="1"
            android:layout_rowWeight="1"
-           android:layout_marginBottom="15dp"
-           android:layout_marginLeft="10dp"
            android:layout_marginRight="10dp"
            app:cardElevation="8dp"
            app:cardCornerRadius="4dp"
            app:cardBackgroundColor="#CA783E"
            >
+           <ImageView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:background="@drawable/bibleaudio_bg"/>
 
            <LinearLayout
-               android:layout_gravity="center_horizontal|center_vertical"
+               android:layout_gravity="center"
                android:orientation="vertical"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content">
 
                <TextView
-                   android:text="Bible \nAudio "
+                   android:text=" Bible \n Audio "
                    android:textAlignment="center"
                    android:textSize="24sp"
                    android:layout_width="wrap_content"
-                   android:layout_height="wrap_content" />
+                   android:layout_height="wrap_content"
+                   android:textAppearance="@style/customfontstyle"/>
 
            </LinearLayout>
 
        </androidx.cardview.widget.CardView>
 
    </GridLayout>
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="147dp"
+        android:background="@drawable/app_icon2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/listenMenu" />
 </androidx.constraintlayout.widget.ConstraintLayout>

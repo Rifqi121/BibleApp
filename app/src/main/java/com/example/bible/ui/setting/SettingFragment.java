@@ -1,6 +1,7 @@
 package com.example.bible.ui.setting;
 
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,8 @@ public class SettingFragment extends Fragment {
         // preparing list data
         prepareListData();
 
+        setGroupIndicatorToRight();
+
         listAdapter = new ExpandableListAdapter(getActivity().getApplicationContext(), listDataHeader, listDataChild);
 
         // setting list adapter
@@ -72,6 +75,22 @@ public class SettingFragment extends Fragment {
         LanguageList.add("Russian");
 
         listDataChild.put(listDataHeader.get(0), LanguageList);
+    }
+
+    private void setGroupIndicatorToRight() {
+        /* Get the screen width */
+        DisplayMetrics dm = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int width = dm.widthPixels;
+
+        expListView.setIndicatorBounds(width - getDipsFromPixel(0), width - getDipsFromPixel(10));
+    }
+
+    public int getDipsFromPixel(float pixels) {
+        // Get the screen's density scale
+        final float scale = getResources().getDisplayMetrics().density;
+        // Convert the dps to pixels, based on density scale
+        return (int) (pixels * scale + 0.5f);
     }
 
     @Override
