@@ -12,10 +12,22 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/nav_pray"
+        android:name="com.example.bible.ui.pray.PrayFragment"
+        android:label="@string/menu_pray"
+        tools:layout="@layout/fragment_pray" />
+
+    <fragment
         android:id="@+id/nav_setting"
         android:name="com.example.bible.ui.setting.SettingFragment"
         android:label="@string/menu_setting"
         tools:layout="@layout/fragment_setting" />
+
+    <fragment
+        android:id="@+id/nav_grow"
+        android:name="com.example.bible.ui.grow.GrowFragment"
+        android:label="@string/menu_grow"
+        tools:layout="@layout/fragment_grow" />
 
     <fragment
         android:id="@+id/nav_book"
