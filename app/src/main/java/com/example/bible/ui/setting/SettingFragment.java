@@ -1,15 +1,21 @@
 package com.example.bible.ui.setting;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -19,6 +25,7 @@ import com.example.bible.ExpandableListAdapter;
 import com.example.bible.R;
 import com.example.bible.databinding.FragmentSettingBinding;
 import com.example.bible.ui.setting.SettingViewModel;
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +39,9 @@ public class SettingFragment extends Fragment {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
+    MaterialCardView cardView;
+    ImageButton show;
+    LinearLayout hiddenLayout;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -41,17 +51,23 @@ public class SettingFragment extends Fragment {
         binding = FragmentSettingBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        expListView = root.findViewById(R.id.langSetting);
+        cardView = root.findViewById(R.id.cardView);
+        show = root.findViewById(R.id.button_show);
+        hiddenLayout = root.findViewById(R.id.linear_layout);
 
-        // preparing list data
-        prepareListData();
 
-        setGroupIndicatorToRight();
+        show.setOnClickListener(v -> {
+            if (hiddenLayout.getVisibility() == root.VISIBLE) {
+                TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
+                hiddenLayout.setVisibility(root.GONE);
+                show.setImageResource(R.drawable.ic_baseline_keyboard_arrow_down_24);
+            } else {
+                TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
+                hiddenLayout.setVisibility(root.VISIBLE);
+                show.setImageResource(R.drawable.ic_baseline_keyboard_arrow_up_24);
+            }
+        });
 
-        listAdapter = new ExpandableListAdapter(getActivity().getApplicationContext(), listDataHeader, listDataChild);
-
-        // setting list adapter
-        expListView.setAdapter(listAdapter);
 
         settingViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -62,36 +78,6 @@ public class SettingFragment extends Fragment {
         return root;
     }
 
-    private void prepareListData() {
-        listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
-
-        // Adding child data
-        listDataHeader.add(getString(R.string.language));
-
-        // Adding child data
-        List<String> LanguageList = new ArrayList<String>();
-        LanguageList.add(getString(R.string.english));
-        LanguageList.add(getString(R.string.russian));
-
-        listDataChild.put(listDataHeader.get(0), LanguageList);
-    }
-
-    private void setGroupIndicatorToRight() {
-        /* Get the screen width */
-        DisplayMetrics dm = new DisplayMetrics();
-        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int width = dm.widthPixels;
-
-        expListView.setIndicatorBounds(width - getDipsFromPixel(0), width - getDipsFromPixel(10));
-    }
-
-    public int getDipsFromPixel(float pixels) {
-        // Get the screen's density scale
-        final float scale = getResources().getDisplayMetrics().density;
-        // Convert the dps to pixels, based on density scale
-        return (int) (pixels * scale + 0.5f);
-    }
 
     @Override
     public void onDestroyView() {

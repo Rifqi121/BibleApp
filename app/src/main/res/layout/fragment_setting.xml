@@ -6,48 +6,140 @@
     android:layout_height="match_parent"
     tools:context=".ui.setting.SettingFragment">
 
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/notifBible"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#2D2D2D"
-        android:paddingHorizontal="20dp"
-        android:textColor="@color/white"
-        android:text="@string/notify_bible"
-        android:textAppearance="@style/customfontstyle"
-        android:button="@null"
-        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        app:cardCornerRadius="15dp"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="#2D2D2D"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/prayerRequest"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#2D2D2D"
-        android:paddingHorizontal="20dp"
-        android:layout_marginTop="15dp"
-        android:textColor="@color/white"
-        android:text="@string/prayer_request"
-        android:textAppearance="@style/customfontstyle"
-        android:button="@null"
-        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/notifBible"/>
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/notifBible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="15dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/white"
+            android:layoutDirection="rtl"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:text="@string/notify_bible"
+            android:textAppearance="@style/customfontstyle" />
+        </androidx.cardview.widget.CardView>
 
-    <ExpandableListView
-        android:id="@+id/langSetting"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#2D2D2D"
-        android:paddingHorizontal="20dp"
-        android:layout_marginTop="15dp"
-        android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorRight"
+        app:cardCornerRadius="15dp"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="#2D2D2D"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/prayerRequest" />
+        app:layout_constraintTop_toBottomOf="@id/card1">
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/prayerRequest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="15dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/white"
+            android:layoutDirection="rtl"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:text="@string/prayer_request"
+            android:textAppearance="@style/customfontstyle" />
+
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="#2D2D2D"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="5dp"
+                android:paddingHorizontal="15dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:textColor="@color/white"
+                    android:gravity="center_vertical"
+                    android:textAppearance="@style/customfontstyle"
+                    android:text="@string/language" />
+
+                <ImageButton
+                    android:id="@+id/button_show"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_baseline_keyboard_arrow_down_24"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="15dp">
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RadioButton android:id="@+id/radio_eng"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layoutDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:layout_gravity="start"
+                            android:textColor="@color/white"
+                            android:text="@string/english"/>
+
+                        <RadioButton android:id="@+id/radio_rus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layoutDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:layout_gravity="start"
+                            android:textColor="@color/white"
+                            android:text="@string/russian"/>
+                    </RadioGroup>
+
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
