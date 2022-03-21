@@ -67,12 +67,12 @@ public class SettingFragment extends Fragment {
         listDataChild = new HashMap<String, List<String>>();
 
         // Adding child data
-        listDataHeader.add("Language");
+        listDataHeader.add(getString(R.string.language));
 
         // Adding child data
         List<String> LanguageList = new ArrayList<String>();
-        LanguageList.add("English");
-        LanguageList.add("Russian");
+        LanguageList.add(getString(R.string.english));
+        LanguageList.add(getString(R.string.russian));
 
         listDataChild.put(listDataHeader.get(0), LanguageList);
     }

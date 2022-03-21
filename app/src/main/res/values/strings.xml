@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">Bible</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name" translatable="false">Sharikov</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">Android Studio</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
+    <string name="action_settings" translatable="false">Settings</string>
 
     <string name="menu_home">Listen</string>
     <string name="menu_pray">Pray</string>
@@ -13,4 +13,12 @@
     <string name="menu_grow">Grow</string>
     <string name="menu_setting">Setting</string>
     <string name="language">Language</string>
+    <string name="podcast">Podcast</string>
+    <string name="musicPlayer">Music\nPlayer</string>
+    <string name="sermons">Sermons</string>
+    <string name="bibleAudio">Bible\nAudio</string>
+    <string name="notify_bible">Notify bible</string>
+    <string name="prayer_request">Prayer request</string>
+    <string name="english">English</string>
+    <string name="russian">Russian</string>
 </resources>

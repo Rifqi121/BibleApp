@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bible">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,10 +11,13 @@
         android:roundIcon="@mipmap/ic_sharikov_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bible">
+        <activity android:name=".SermonsActivity"></activity>
+        <activity android:name=".MusicPlayerActivity" />
+        <activity android:name=".PodcastActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Bible.NoActionBar"></activity>
+            android:theme="@style/Theme.Bible.NoActionBar" />
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/Theme.Bible.NoActionBar">
