@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -40,6 +42,8 @@ public class SettingFragment extends Fragment {
     private MaterialCardView cardView;
     private ImageButton show;
     private LinearLayout hiddenLayout;
+    private AppCompatCheckBox notifyBible;
+    private AppCompatCheckBox notifyPrayer;
     private RadioGroup rgLanguage;
     private RadioButton rbEnglish;
     private RadioButton rbRussian;
@@ -56,11 +60,27 @@ public class SettingFragment extends Fragment {
         cardView = root.findViewById(R.id.cardView);
         show = root.findViewById(R.id.button_show);
         hiddenLayout = root.findViewById(R.id.linear_layout);
+        notifyBible = root.findViewById(R.id.notifBible);
+        notifyPrayer = root.findViewById(R.id.prayerRequest);
         rgLanguage = root.findViewById(R.id.rgLanguage);
         rbEnglish = root.findViewById(R.id.radio_eng);
         rbRussian = root.findViewById(R.id.radio_rus);
 
         setDataSetting();
+
+        notifyBible.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                SettingPreferences.setNotifyBible(getActivity().getBaseContext(), b);
+            }
+        });
+
+        notifyPrayer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                SettingPreferences.setNotifyPrayer(getActivity().getBaseContext(), b);
+            }
+        });
 
         rgLanguage.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -104,7 +124,19 @@ public class SettingFragment extends Fragment {
     }
 
     private void setDataSetting() {
+        boolean isNotifyBible = SettingPreferences.getNotifyBible(getActivity().getBaseContext());
+        boolean isNotifyPrayer = SettingPreferences.getNotifyPrayer(getActivity().getBaseContext());
         String codeLang = SettingPreferences.getCodeLanguage(getActivity().getBaseContext());
+
+        // Notify Bible
+        if (isNotifyBible) {
+            notifyBible.setChecked(true);
+        }
+
+        // Notify Prayer
+        if (isNotifyPrayer) {
+            notifyPrayer.setChecked(true);
+        }
 
         // Language
         if (codeLang.equals("en")) {
