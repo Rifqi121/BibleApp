@@ -1,5 +1,7 @@
 package com.example.bible.ui.book;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.bible.Book;
 import com.example.bible.MyBookListAdapter;
+import com.example.bible.PodcastActivity;
 import com.example.bible.R;
 import com.example.bible.databinding.FragmentBookBinding;
 
@@ -31,6 +34,9 @@ public class BookFragment extends Fragment {
     private List<Book> bookList;
     private ListView listView;
 
+    String[] bookTitle;
+    String[] bookLink;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         bookViewModel = new ViewModelProvider(this).get(BookViewModel.class);
@@ -40,13 +46,27 @@ public class BookFragment extends Fragment {
 
         bookList = new ArrayList<>();
         listView = root.findViewById(R.id.listView);
+        bookTitle = getResources().getStringArray(R.array.bookTitle);
+        bookLink = getResources().getStringArray(R.array.bookLink);
 
-        for (int i = 1; i <= 100; i++) {
-            bookList.add(new Book("Title " + i));
+        for (int i = 0; i < bookTitle.length; i++) {
+            Book list = new Book (bookTitle[i], bookLink[i]);
+            bookList.add(list);
         }
 
         MyBookListAdapter adapter = new MyBookListAdapter(getActivity().getApplicationContext(), R.layout.listview, bookList);
         listView.setAdapter(adapter);
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String url = bookList.get(position).getLink();
+                Uri link = Uri.parse(url);
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, link);
+                startActivity(browserIntent);
+            }
+        });
 
         bookViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override

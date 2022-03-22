@@ -1,44 +1,31 @@
 package com.example.bible.ui.setting;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.preference.PreferenceFragmentCompat;
 
-import com.example.bible.ExpandableListAdapter;
 import com.example.bible.R;
 import com.example.bible.databinding.FragmentSettingBinding;
-import com.example.bible.ui.setting.SettingViewModel;
 import com.google.android.material.card.MaterialCardView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class SettingFragment extends Fragment {
 
     private SettingViewModel settingViewModel;
     private FragmentSettingBinding binding;
-    ExpandableListAdapter listAdapter;
-    ExpandableListView expListView;
     List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
     MaterialCardView cardView;
     ImageButton show;
     LinearLayout hiddenLayout;
