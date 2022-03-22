@@ -14,4 +14,6 @@
     <string name="prayer_request">Молитвенные нужды</string>
     <string name="english">Английский</string>
     <string name="russian">Русский</string>
+
+    <string name="please_restart">Пожалуйста, перезапустите приложение, чтобы применить изменения правильно!</string>
 </resources>

@@ -22,6 +22,8 @@
     <string name="english">English</string>
     <string name="russian">Russian</string>
 
+    <string name="please_restart">Please restart the app to apply the changes correctly !</string>
+
     <string-array name="bookTitle">
         <item>You Are My Hiding Place</item>
         <item>Берегите любовь!</item>
