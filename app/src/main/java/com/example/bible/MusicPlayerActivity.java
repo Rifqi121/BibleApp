@@ -28,6 +28,7 @@ public class MusicPlayerActivity extends AppCompatActivity {
         // Enable Javascript
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        mWebView.setOverScrollMode(WebView.OVER_SCROLL_NEVER);
 
         spinner = findViewById(R.id.progressBar1);
         mWebView.setWebViewClient(new CustomWebViewClient());
@@ -35,17 +36,16 @@ public class MusicPlayerActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        if (mWebView.canGoBack()) {
-            mWebView.goBack();
-        }else {
-            super.onBackPressed();
-        }
-    }
+//    @Override
+//    public void onBackPressed() {
+//        if (mWebView.canGoBack()) {
+//            mWebView.goBack();
+//        }else {
+//            super.onBackPressed();
+//        }
+//    }
+//
 
-    // This allows for a splash screen
-// (and hide elements once the page loads)
     private class CustomWebViewClient extends WebViewClient {
 
         @Override
