@@ -1,7 +1,12 @@
 package com.example.bible;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.AlarmManager;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -9,6 +14,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
 
+import java.util.Calendar;
 import java.util.Locale;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -30,10 +36,22 @@ public class SplashScreenActivity extends AppCompatActivity {
                 getWindowManager().getDefaultDisplay().getMetrics(metrics);
                 Resources resources = new Resources(getAssets(), metrics, conf);
 
+                if (SettingPreferences.getNotifyBible(getBaseContext())) {
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.set(Calendar.HOUR_OF_DAY, 9);
+                    calendar.set(Calendar.MINUTE, 00);
+                    calendar.set(Calendar.SECOND, 00);
+
+                    Intent intent = new Intent(getApplicationContext(), NotificationReceiver.class);
+                    PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                    alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+                }
+
                 Intent landing = new Intent(SplashScreenActivity.this, MainActivity.class);
                 startActivity(landing);
                 finish();
-
             }
         },loading);
     }
