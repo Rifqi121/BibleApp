@@ -23,6 +23,7 @@
     <string name="russian">Russian</string>
 
     <string name="please_restart">Please restart the app to apply the changes correctly !</string>
+    <string name="ok">OK</string>
 
     <string-array name="bookTitle">
         <item>You Are My Hiding Place</item>

@@ -1,5 +1,8 @@
 package com.example.bible.ui.setting;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
@@ -26,8 +29,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.bible.MainActivity;
 import com.example.bible.R;
 import com.example.bible.SettingPreferences;
+import com.example.bible.SplashScreenActivity;
 import com.example.bible.databinding.FragmentSettingBinding;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.snackbar.Snackbar;
@@ -120,6 +125,21 @@ public class SettingFragment extends Fragment {
         }
 
         SettingPreferences.setCodeLanguage(getActivity().getBaseContext(), codeLocal);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage(getResources().getString(R.string.please_restart));
+        builder.setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent landing = new Intent(getActivity().getBaseContext(), SplashScreenActivity.class);
+                startActivity(landing);
+                getActivity().finish();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
         Snackbar.make(getActivity().findViewById(android.R.id.content), getResources().getString(R.string.please_restart), Snackbar.LENGTH_LONG).show();
     }
 
