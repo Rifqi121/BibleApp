@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_sharikov_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bible">
-        <activity android:name=".SermonsActivity"></activity>
+        <activity android:name=".SermonsActivity" />
         <activity android:name=".MusicPlayerActivity" />
         <activity android:name=".PodcastActivity" />
         <activity

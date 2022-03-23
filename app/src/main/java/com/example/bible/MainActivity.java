@@ -1,6 +1,14 @@
 package com.example.bible;
 
+import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -17,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+
+    PendingIntent pendingIntent;
+    AlarmManager alarmManager;
+    BroadcastReceiver mReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +50,36 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        RegisterAlarmBroadcast();
+
+        if (SettingPreferences.getNotifyBible(getBaseContext())) {
+            // nge set waktunya disini
+            // AlarmManager.INTERVAL_FIFTEEN_MINUTES = keulang tiap 15 menit
+            // Yang 5000 = 5 detik
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, 5000, AlarmManager.INTERVAL_FIFTEEN_MINUTES, pendingIntent);
+        } else {
+            UnregisterAlarmBroadcast();
+        }
+    }
+
+    private void RegisterAlarmBroadcast() {
+        mReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                NotificationReceiver notificationReceiver = new NotificationReceiver();
+                notificationReceiver.onReceive(context, intent);
+            }
+        };
+
+        registerReceiver(mReceiver, new IntentFilter("com.example.bible"));
+        pendingIntent = PendingIntent.getBroadcast(this, 0, new Intent("com.example.bible"), 0);
+        alarmManager = (AlarmManager) (this.getSystemService(Context.ALARM_SERVICE));
+    }
+
+    private void UnregisterAlarmBroadcast() {
+        alarmManager.cancel(pendingIntent);
+        getBaseContext().unregisterReceiver(mReceiver);
     }
 
     @Override
