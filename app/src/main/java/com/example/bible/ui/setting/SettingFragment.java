@@ -77,6 +77,7 @@ public class SettingFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 SettingPreferences.setNotifyBible(getActivity().getBaseContext(), b);
+                showAlert();
             }
         });
 
@@ -84,6 +85,7 @@ public class SettingFragment extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 SettingPreferences.setNotifyPrayer(getActivity().getBaseContext(), b);
+                showAlert();
             }
         });
 
@@ -125,7 +127,10 @@ public class SettingFragment extends Fragment {
         }
 
         SettingPreferences.setCodeLanguage(getActivity().getBaseContext(), codeLocal);
+        showAlert();
+    }
 
+    private void showAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage(getResources().getString(R.string.please_restart));
         builder.setPositiveButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
@@ -139,8 +144,6 @@ public class SettingFragment extends Fragment {
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-
-        Snackbar.make(getActivity().findViewById(android.R.id.content), getResources().getString(R.string.please_restart), Snackbar.LENGTH_LONG).show();
     }
 
     private void setDataSetting() {

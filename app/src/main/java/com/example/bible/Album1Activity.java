@@ -10,28 +10,40 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-public class PodcastActivity extends AppCompatActivity {
+public class Album1Activity extends AppCompatActivity {
 
-    public WebView mWebView;
+    private WebView mWebView;
     private ProgressBar spinner;
     String VisibilityWebViewInitialUse = "show";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_podcast);
+        setContentView(R.layout.activity_album1);
 
         mWebView = (WebView) findViewById(R.id.webview);
-        mWebView.loadUrl("https://sharikovministries.com/podcast/");
+        mWebView.loadUrl("https://sharikovministries.com/%d0%b1%d0%b5%d0%b7-%d1%82%d0%b5%d0%b1%d1%8f-%d1%82%d0%b5%d0%bc%d0%bd%d0%be-2/");
 
         // Enable Javascript
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        mWebView.setOverScrollMode(WebView.OVER_SCROLL_NEVER);
 
         spinner = findViewById(R.id.progressBar1);
-        mWebView.setWebViewClient(new PodcastActivity.CustomWebViewClient());
+        mWebView.setWebViewClient(new CustomWebViewClient());
+
 
     }
+
+//    @Override
+//    public void onBackPressed() {
+//        if (mWebView.canGoBack()) {
+//            mWebView.goBack();
+//        }else {
+//            super.onBackPressed();
+//        }
+//    }
+//
 
     private class CustomWebViewClient extends WebViewClient {
 
