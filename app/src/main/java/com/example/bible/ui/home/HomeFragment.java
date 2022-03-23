@@ -1,12 +1,17 @@
 package com.example.bible.ui.home;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,12 +28,13 @@ import com.example.bible.PodcastActivity;
 import com.example.bible.R;
 import com.example.bible.SermonsActivity;
 import com.example.bible.databinding.FragmentHomeBinding;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
-    public CardView mCard;
     public CardView music;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -56,49 +62,50 @@ public class HomeFragment extends Fragment {
         music.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PopupMenu popup = new PopupMenu(getActivity().getApplicationContext(), music);
-                //Inflating the Popup using xml file
-                popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity());
+                bottomSheetDialog.setContentView(R.layout.activity_bottom_sheet_dialog);
 
-                //registering popup with OnMenuItemClickListener
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    public boolean onMenuItemClick(MenuItem item) {
-                        switch (item.getItemId()){
-                            case R.id.album1:
-                                music.getContext().startActivity(new Intent(music.getContext(), Album1Activity.class));
-                                break;
+                TextView album1 = bottomSheetDialog.findViewById(R.id.album1);
+                TextView album2 = bottomSheetDialog.findViewById(R.id.album2);
+                TextView album3 = bottomSheetDialog.findViewById(R.id.album3);
+                TextView album4 = bottomSheetDialog.findViewById(R.id.album4);
 
-                            case R.id.album2:
-                                music.getContext().startActivity(new Intent(music.getContext(), Album2Activity.class));
-                                return true;
+                bottomSheetDialog.show();
 
-                            case R.id.album3:
-                                music.getContext().startActivity(new Intent(music.getContext(), Album3Activity.class));
-                                return true;
-
-                            case R.id.album4:
-                                music.getContext().startActivity(new Intent(music.getContext(), Album4Activity.class));
-                                return true;
-                        }
-                        return true;
+                album1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        music.getContext().startActivity(new Intent(music.getContext(), Album1Activity.class));
+                        bottomSheetDialog.dismiss();
                     }
                 });
 
-                popup.show();
+                album2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        music.getContext().startActivity(new Intent(music.getContext(), Album2Activity.class));
+                        bottomSheetDialog.dismiss();
+                    }
+                });
+
+                album3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        music.getContext().startActivity(new Intent(music.getContext(), Album3Activity.class));
+                        bottomSheetDialog.dismiss();
+                    }
+                });
+
+                album4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        music.getContext().startActivity(new Intent(music.getContext(), Album4Activity.class));
+                        bottomSheetDialog.dismiss();
+                    }
+                });
+
             }
         });
-
-//        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem menuItem) {
-//                Toast.makeText(getActivity().getApplicationContext(),
-//                        "Clicked popup menu item " + menuItem.getTitle(),
-//                        Toast.LENGTH_SHORT).show();
-//                return true;
-//            }
-//        });
-//        popup.show();
-
 
         sermons.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,35 +122,6 @@ public class HomeFragment extends Fragment {
         return root;
 
     }
-
-//    public void openPopupMenu(View view){
-//
-//        PopupMenu pm = new PopupMenu(getActivity().getApplicationContext(), music);
-//        pm.getMenuInflater().inflate(R.menu.popup, pm.getMenu());
-//        pm.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                switch (item.getItemId()){
-//                    case R.id.album1:
-//                        Toast.makeText(getActivity().getApplicationContext(), "Clicked First Menu Item", Toast.LENGTH_SHORT).show();
-//                        return true;
-//
-//                    case R.id.album2:
-//                        Toast.makeText(getActivity().getApplicationContext(), "Clicked Second Menu Item", Toast.LENGTH_SHORT).show();
-//                        return true;
-//
-//                    case R.id.album3:
-//                        Toast.makeText(getActivity().getApplicationContext(), "Clicked Third Menu Item", Toast.LENGTH_SHORT).show();
-//                        return true;
-//                }
-//
-//                return true;
-//            }
-//        });
-//        pm.show();
-//
-//    }
-
 
     @Override
     public void onDestroyView() {

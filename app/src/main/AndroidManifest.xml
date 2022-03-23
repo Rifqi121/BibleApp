@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.bible">
+    package="com.example.bible" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SET_ALARM" />
@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_sharikov_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Bible">
+        android:theme="@style/Theme.Bible" >
         <activity android:name=".Album4Activity" />
         <activity android:name=".Album3Activity" />
         <activity android:name=".Album1Activity" />
@@ -22,14 +22,14 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Bible.NoActionBar">
+            android:theme="@style/Theme.Bible.NoActionBar" >
             <intent-filter>
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
         <activity
             android:name=".SplashScreenActivity"
-            android:theme="@style/Theme.Bible.NoActionBar">
+            android:theme="@style/Theme.Bible.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
