@@ -139,8 +139,6 @@ public class SettingFragment extends Fragment {
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-
-        Snackbar.make(getActivity().findViewById(android.R.id.content), getResources().getString(R.string.please_restart), Snackbar.LENGTH_LONG).show();
     }
 
     private void setDataSetting() {

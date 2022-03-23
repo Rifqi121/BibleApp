@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SermonsActivity">
+    tools:context=".Album1Activity">
 
     <WebView
         android:id="@+id/webview"
@@ -12,10 +12,11 @@
         android:visibility="gone"/>
 
     <ProgressBar
-        android:id="@+id/progressBar2"
+        android:id="@+id/progressBar1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_centerInParent="true" />
+
 </RelativeLayout>
