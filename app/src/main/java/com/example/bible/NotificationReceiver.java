@@ -1,10 +1,12 @@
 package com.example.bible;
 
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
@@ -19,9 +21,16 @@ public class NotificationReceiver extends BroadcastReceiver {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setContentIntent(pendingIntent)
                 .setSmallIcon(R.drawable.app_icon)
-                .setContentTitle("Ransoms Bible")
-                .setContentText("Ransoms Bible verse a day")
+                .setContentTitle("Reminder")
+                .setContentText("Read the Bible and grow in His Word!")
                 .setAutoCancel(true);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String channelID = "b-sharikov";
+            NotificationChannel channel = new NotificationChannel(channelID, "Sharikov Bible", NotificationManager.IMPORTANCE_HIGH);
+            manager.createNotificationChannel(channel);
+            builder.setChannelId(channelID);
+        }
 
         manager.notify(100, builder.build());
     }
