@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -20,6 +22,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bible.databinding.ActivityMainBinding;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,15 +55,37 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        Calendar calendar = Calendar.getInstance();
+
+        // Buat nge cek ini bisa diubah dulu
+        // Menyesuaikan aja
+        calendar.set(Calendar.HOUR_OF_DAY, 9);
+//        calendar.set(Calendar.SECOND, 00);
+        long triggerTime = calendar.getTimeInMillis();
+
+        if (triggerTime >= System.currentTimeMillis()) {
+            triggerTime = calendar.getTimeInMillis() - System.currentTimeMillis();
+        }
         RegisterAlarmBroadcast();
 
         if (SettingPreferences.getNotifyBible(getBaseContext())) {
-            // nge set waktunya disini
-            // AlarmManager.INTERVAL_FIFTEEN_MINUTES = keulang tiap 15 menit
-            // Yang 5000 = 5 detik
-            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, 5000, AlarmManager.INTERVAL_FIFTEEN_MINUTES, pendingIntent);
+            if (!SettingPreferences.getNotifyBibleIsSet(getBaseContext())) {
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+            }
         } else {
             UnregisterAlarmBroadcast();
+            SettingPreferences.setNotifyBibleIsSet(getBaseContext(), false);
+        }
+
+        if (triggerTime != calendar.getTimeInMillis()) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    NotificationReceiver notificationReceiver = new NotificationReceiver();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    notificationReceiver.onReceive(getApplicationContext(), intent);
+                }
+            }, triggerTime);
         }
     }
 
@@ -75,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
         registerReceiver(mReceiver, new IntentFilter("com.example.bible"));
         pendingIntent = PendingIntent.getBroadcast(this, 0, new Intent("com.example.bible"), 0);
         alarmManager = (AlarmManager) (this.getSystemService(Context.ALARM_SERVICE));
+
+        SettingPreferences.setNotifyBibleIsSet(getBaseContext(), true);
     }
 
     private void UnregisterAlarmBroadcast() {

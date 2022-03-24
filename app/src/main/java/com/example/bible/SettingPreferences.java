@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 
 public class SettingPreferences {
     static final String KEY_NOTIFY_BIBLE = "notify_bible";
+    static final String KEY_NOTIFY_BIBLE_ISSET = "notify_bible_isset";
     static final String KEY_NOTIFY_PRAYER = "notify_prayer";
     static final String KEY_LANGUAGE = "code_lang";
 
@@ -21,6 +22,16 @@ public class SettingPreferences {
 
     public static boolean getNotifyBible(Context context) {
         return getSharedPreferences(context).getBoolean(KEY_NOTIFY_BIBLE, true);
+    }
+
+    public static void setNotifyBibleIsSet(Context context, boolean isSet) {
+        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.putBoolean(KEY_NOTIFY_BIBLE_ISSET, isSet);
+        editor.apply();
+    }
+
+    public static boolean getNotifyBibleIsSet(Context context) {
+        return getSharedPreferences(context).getBoolean(KEY_NOTIFY_BIBLE_ISSET, true);
     }
 
     public static void setNotifyPrayer(Context context, boolean notify) {
