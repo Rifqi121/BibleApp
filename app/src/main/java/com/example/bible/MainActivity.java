@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
 
         // Buat nge cek ini bisa diubah dulu
-        // Menyesuaikan aja
         calendar.set(Calendar.HOUR_OF_DAY, 9);
 //        calendar.set(Calendar.SECOND, 00);
         long triggerTime = calendar.getTimeInMillis();
@@ -71,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         if (SettingPreferences.getNotifyBible(getBaseContext())) {
             if (!SettingPreferences.getNotifyBibleIsSet(getBaseContext())) {
                 alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+                SettingPreferences.setNotifyBibleIsSet(getBaseContext(), true);
             }
         } else {
             UnregisterAlarmBroadcast();
@@ -101,8 +101,6 @@ public class MainActivity extends AppCompatActivity {
         registerReceiver(mReceiver, new IntentFilter("com.example.bible"));
         pendingIntent = PendingIntent.getBroadcast(this, 0, new Intent("com.example.bible"), 0);
         alarmManager = (AlarmManager) (this.getSystemService(Context.ALARM_SERVICE));
-
-        SettingPreferences.setNotifyBibleIsSet(getBaseContext(), true);
     }
 
     private void UnregisterAlarmBroadcast() {
