@@ -18,4 +18,9 @@
 
     <string name="please_restart">Пожалуйста, перезапустите приложение, чтобы применить изменения правильно!</string>
     <string name="ok">Xорoшo</string>
+    <string name="title_notif_bible">Напоминание:</string>
+    <string name="msg_notif_bible">Читайт Библию и возpacтaй в Его познaнии!</string>
+
+    <string name="title_notif_pray">Напоминание:</string>
+    <string name="msg_notif_pray">Смотрите последние молитвенные просьбы</string>
 </resources>

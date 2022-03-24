@@ -1,17 +1,12 @@
 package com.example.bible.ui.home;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,7 +24,6 @@ import com.example.bible.PodcastActivity;
 import com.example.bible.R;
 import com.example.bible.SermonsActivity;
 import com.example.bible.databinding.FragmentHomeBinding;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class HomeFragment extends Fragment {
@@ -115,11 +109,11 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        bible.setOnClickListener(new View.OnClickListener(){
+        bible.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 bible.getContext().startActivity(new Intent(bible.getContext(), BibleAudioActivity.class));
-        }
+            }
         });
 
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {

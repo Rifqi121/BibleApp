@@ -11,6 +11,7 @@
         android:id="@+id/imageView"
         android:layout_width="133dp"
         android:layout_height="75dp"
-        app:srcCompat="@drawable/app_icon" />
+        app:srcCompat="@drawable/app_icon"
+        android:contentDescription="@string/app_name" />
 
 </LinearLayout>

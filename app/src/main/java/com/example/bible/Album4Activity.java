@@ -14,7 +14,7 @@ public class Album4Activity extends AppCompatActivity {
 
     private WebView mWebView;
     private ProgressBar spinner;
-    String VisibilityWebViewInitialUse = "show";
+    private String VisibilityWebViewInitialUse = "show";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

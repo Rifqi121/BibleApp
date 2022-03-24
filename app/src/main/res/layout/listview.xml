@@ -28,8 +28,8 @@
             android:layout_marginTop="20dp"
             android:layout_toRightOf="@+id/imageView"
             android:ellipsize="end"
-            android:text="Book"
             android:singleLine="true"
+            android:text="Book"
             android:textAppearance="@style/customfontstyle"
             android:textColor="@color/white"
             android:textSize="16sp" />

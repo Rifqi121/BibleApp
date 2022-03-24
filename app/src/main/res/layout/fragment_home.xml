@@ -17,163 +17,162 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-   <RelativeLayout
-       android:id="@+id/listenMenu"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_marginTop="10dp"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toTopOf="parent">
+        <RelativeLayout
+            android:id="@+id/listenMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-       <RelativeLayout
-           android:id="@+id/mainMenu"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_centerHorizontal="true">
-       <androidx.cardview.widget.CardView
-           android:id="@+id/podcast"
-           android:layout_width="wrap_content"
-           android:layout_height="200dp"
-           android:layout_marginBottom="15dp"
-           android:layout_marginRight="5dp"
-           app:cardElevation="8dp"
-           app:cardCornerRadius="8dp">
+            <RelativeLayout
+                android:id="@+id/mainMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
 
-           <ImageView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:background="@drawable/podcast_bg"/>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/podcast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="15dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp">
 
-           <LinearLayout
-               android:layout_gravity="center"
-               android:orientation="vertical"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/podcast_bg" />
 
-               <TextView
-                   android:text="@string/podcast"
-                   android:textAlignment="center"
-                   android:textSize="24sp"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:textAppearance="@style/customfontstyle"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
 
-           </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/podcast"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/customfontstyle"
+                            android:textSize="24sp" />
 
-       </androidx.cardview.widget.CardView>
+                    </LinearLayout>
 
-       <androidx.cardview.widget.CardView
-           android:id="@+id/musicPlayer"
-           android:layout_width="wrap_content"
-           android:layout_height="200dp"
-           android:layout_marginBottom="15dp"
-           android:layout_marginLeft="5dp"
-           android:layout_toEndOf="@id/podcast"
-           app:cardElevation="8dp"
-           app:cardCornerRadius="8dp"
-           >
+                </androidx.cardview.widget.CardView>
 
-           <ImageView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:background="@drawable/music_bg"/>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/musicPlayer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_toEndOf="@id/podcast"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp">
 
-           <LinearLayout
-               android:layout_gravity="center"
-               android:orientation="vertical"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/music_bg" />
 
-               <TextView
-                   android:text="@string/musicPlayer"
-                   android:textAlignment="center"
-                   android:textSize="24sp"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:textAppearance="@style/customfontstyle"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
 
-           </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/musicPlayer"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/customfontstyle"
+                            android:textSize="24sp" />
 
-       </androidx.cardview.widget.CardView>
+                    </LinearLayout>
 
-       <androidx.cardview.widget.CardView
-           android:id="@+id/sermons"
-           android:layout_width="wrap_content"
-           android:layout_height="200dp"
-           android:layout_below="@id/podcast"
-           android:layout_marginEnd="5dp"
-           app:cardElevation="8dp"
-           app:cardCornerRadius="8dp"
-           >
+                </androidx.cardview.widget.CardView>
 
-           <ImageView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:background="@drawable/sermons_bg"/>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/sermons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_below="@id/podcast"
+                    android:layout_marginEnd="5dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp">
 
-           <LinearLayout
-               android:layout_gravity="center"
-               android:orientation="vertical"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/sermons_bg" />
 
-               <TextView
-                   android:text="@string/sermons"
-                   android:textAlignment="center"
-                   android:textSize="24sp"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:textAppearance="@style/customfontstyle"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
 
-           </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sermons"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/customfontstyle"
+                            android:textSize="24sp" />
 
-       </androidx.cardview.widget.CardView>
+                    </LinearLayout>
 
-       <androidx.cardview.widget.CardView
-           android:id="@+id/bibleAudio"
-           android:layout_width="wrap_content"
-           android:layout_height="200dp"
-           android:layout_below="@id/musicPlayer"
-           android:layout_toEndOf="@id/sermons"
-           android:layout_marginLeft="5dp"
-           app:cardElevation="8dp"
-           app:cardCornerRadius="8dp"
-           >
-           <ImageView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:background="@drawable/bibleaudio_bg"/>
+                </androidx.cardview.widget.CardView>
 
-           <LinearLayout
-               android:layout_gravity="center"
-               android:orientation="vertical"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/bibleAudio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_below="@id/musicPlayer"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toEndOf="@id/sermons"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp">
 
-               <TextView
-                   android:text="@string/bibleAudio"
-                   android:textAlignment="center"
-                   android:textSize="24sp"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:textAppearance="@style/customfontstyle"/>
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bibleaudio_bg" />
 
-           </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
 
-       </androidx.cardview.widget.CardView>
-       </RelativeLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/bibleAudio"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/customfontstyle"
+                            android:textSize="24sp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
 
 
-       <ImageView
-           android:id="@+id/logo"
-           android:layout_width="260dp"
-           android:layout_height="107dp"
-           android:layout_centerHorizontal="true"
-           android:background="@drawable/app_icon2"
-           android:layout_below="@id/mainMenu"/>
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="260dp"
+                android:layout_height="107dp"
+                android:layout_below="@id/mainMenu"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/app_icon2" />
 
-   </RelativeLayout>
+        </RelativeLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

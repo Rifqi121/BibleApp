@@ -4,7 +4,7 @@ public class Book {
     String title;
     String link;
 
-    public Book(String title, String link){
+    public Book(String title, String link) {
         this.title = title;
         this.link = link;
     }

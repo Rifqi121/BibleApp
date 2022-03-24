@@ -20,7 +20,7 @@ public class GrowFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v=inflater.inflate(R.layout.fragment_grow, container, false);
+        View v = inflater.inflate(R.layout.fragment_grow, container, false);
         mWebView = (WebView) v.findViewById(R.id.webview);
         mWebView.loadUrl("https://www.biblica.com/resources/reading-plans/");
 

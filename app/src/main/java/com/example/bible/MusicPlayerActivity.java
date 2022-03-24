@@ -9,13 +9,12 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 public class MusicPlayerActivity extends AppCompatActivity {
 
     private WebView mWebView;
     private ProgressBar spinner;
-    String VisibilityWebViewInitialUse = "show";
+    private String VisibilityWebViewInitialUse = "show";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

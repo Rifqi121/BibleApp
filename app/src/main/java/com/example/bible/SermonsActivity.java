@@ -14,7 +14,7 @@ public class SermonsActivity extends AppCompatActivity {
 
     public WebView mWebView;
     private ProgressBar spinner;
-    String VisibilityWebViewInitialUse = "show";
+    private String VisibilityWebViewInitialUse = "show";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class SermonsActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (mWebView.canGoBack()) {
             mWebView.goBack();
-        }else {
+        } else {
             super.onBackPressed();
         }
     }

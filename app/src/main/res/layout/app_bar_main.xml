@@ -16,12 +16,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorOnSecondary"
-            app:popupTheme="@style/Theme.Bible.PopupOverlay" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorOnSecondary"
+                app:popupTheme="@style/Theme.Bible.PopupOverlay" />
 
         </RelativeLayout>
 

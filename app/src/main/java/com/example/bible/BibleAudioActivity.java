@@ -14,7 +14,7 @@ public class BibleAudioActivity extends AppCompatActivity {
 
     public WebView mWebView;
     private ProgressBar spinner;
-    String VisibilityWebViewInitialUse = "show";
+    private String VisibilityWebViewInitialUse = "show";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -7,11 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,7 +18,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.bible.Book;
 import com.example.bible.BookViewActivity;
 import com.example.bible.MyBookListAdapter;
-import com.example.bible.PodcastActivity;
 import com.example.bible.R;
 import com.example.bible.databinding.FragmentBookBinding;
 
@@ -53,7 +48,7 @@ public class BookFragment extends Fragment {
 //        RelativeLayout layout = root.findViewById(R.id.sharikovSongBook);
 
         for (int i = 0; i < bookTitle.length; i++) {
-            Book list = new Book (bookTitle[i], bookLink[i]);
+            Book list = new Book(bookTitle[i], bookLink[i]);
             bookList.add(list);
         }
 
@@ -67,10 +62,10 @@ public class BookFragment extends Fragment {
                 String list = bookList.get(position).getTitle();
                 String url = bookList.get(position).getLink();
                 Uri link = Uri.parse(url);
-                if (list.equals("Sharikov Songbook") ){
+                if (list.equals("Sharikov Songbook")) {
                     Intent myIntent = new Intent(getActivity(), BookViewActivity.class);
                     startActivity(myIntent);
-                }else {
+                } else {
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, link);
                     startActivity(browserIntent);
                 }

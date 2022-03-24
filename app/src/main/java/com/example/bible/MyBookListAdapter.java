@@ -1,5 +1,6 @@
 package com.example.bible;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +29,7 @@ public class MyBookListAdapter extends ArrayAdapter<Book> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(resource, null, false);
+        @SuppressLint("ViewHolder") View view = layoutInflater.inflate(resource, null, false);
 
         TextView bookTitle = view.findViewById(R.id.bookTitle);
 

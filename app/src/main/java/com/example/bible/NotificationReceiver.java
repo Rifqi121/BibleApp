@@ -12,6 +12,8 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
+import java.util.Calendar;
+
 public class NotificationReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -25,8 +27,8 @@ public class NotificationReceiver extends BroadcastReceiver {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setContentIntent(pendingIntent)
                 .setSmallIcon(R.drawable.app_icon)
-                .setContentTitle("Reminder")
-                .setContentText("Read the Bible and grow in His Word!")
+                .setContentTitle(context.getResources().getString(R.string.title_notif_bible))
+                .setContentText(context.getResources().getString(R.string.msg_notif_bible))
                 .setSound(sound)
                 .setAutoCancel(true);
 
@@ -38,5 +40,16 @@ public class NotificationReceiver extends BroadcastReceiver {
         }
 
         manager.notify(100, builder.build());
+
+        Calendar calendar = Calendar.getInstance();
+        int today = calendar.get(Calendar.DAY_OF_WEEK);
+
+        if (SettingPreferences.getNotifyPrayer(context)) {
+            if (today == Calendar.TUESDAY || today == Calendar.FRIDAY) {
+                builder.setContentTitle(context.getResources().getString(R.string.title_notif_pray))
+                        .setContentText(context.getResources().getString(R.string.msg_notif_pray));
+                manager.notify(101, builder.build());
+            }
+        }
     }
 }

@@ -3,14 +3,10 @@ package com.example.bible.ui.setting;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +15,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,16 +24,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.bible.MainActivity;
 import com.example.bible.R;
 import com.example.bible.SettingPreferences;
 import com.example.bible.SplashScreenActivity;
 import com.example.bible.databinding.FragmentSettingBinding;
 import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.snackbar.Snackbar;
-
-import java.util.List;
-import java.util.Locale;
 
 public class SettingFragment extends Fragment {
 

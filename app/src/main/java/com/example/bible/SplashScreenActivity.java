@@ -1,23 +1,13 @@
 package com.example.bible;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-
-import android.app.AlarmManager;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
-import android.widget.Toast;
 
-import java.util.Calendar;
 import java.util.Locale;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -43,6 +33,6 @@ public class SplashScreenActivity extends AppCompatActivity {
                 startActivity(landing);
                 finish();
             }
-        },loading);
+        }, loading);
     }
 }
