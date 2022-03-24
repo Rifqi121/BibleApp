@@ -24,6 +24,7 @@ import com.example.bible.Album1Activity;
 import com.example.bible.Album2Activity;
 import com.example.bible.Album3Activity;
 import com.example.bible.Album4Activity;
+import com.example.bible.BibleAudioActivity;
 import com.example.bible.PodcastActivity;
 import com.example.bible.R;
 import com.example.bible.SermonsActivity;
@@ -112,6 +113,13 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 sermons.getContext().startActivity(new Intent(sermons.getContext(), SermonsActivity.class));
             }
+        });
+
+        bible.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                bible.getContext().startActivity(new Intent(bible.getContext(), BibleAudioActivity.class));
+        }
         });
 
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
