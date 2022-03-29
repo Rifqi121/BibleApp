@@ -62,13 +62,17 @@ public class BookFragment extends Fragment {
                 String list = bookList.get(position).getTitle();
                 String url = bookList.get(position).getLink();
                 Uri link = Uri.parse(url);
-                if (list.equals("Sharikov Songbook")) {
-                    Intent myIntent = new Intent(getActivity(), BookViewActivity.class);
-                    startActivity(myIntent);
-                } else {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, link);
-                    startActivity(browserIntent);
-                }
+                Intent myIntent = new Intent(getActivity(), BookViewActivity.class);
+                myIntent.putExtra("Link", url);
+                myIntent.putExtra("title", list);
+                startActivity(myIntent);
+//                if (list.equals("Sharikov Songbook")) {
+//                    Intent myIntent = new Intent(getActivity(), BookViewActivity.class);
+//                    startActivity(myIntent);
+//                } else {
+//                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, link);
+//                    startActivity(browserIntent);
+//                }
             }
         });
 

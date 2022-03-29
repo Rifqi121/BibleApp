@@ -20,6 +20,7 @@ public class PodcastActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_podcast);
+        setTitle(R.string.podcast);
 
         mWebView = (WebView) findViewById(R.id.webview);
         mWebView.loadUrl("https://sharikovministries.com/podcast/");

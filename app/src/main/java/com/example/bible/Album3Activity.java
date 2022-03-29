@@ -20,6 +20,7 @@ public class Album3Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_album3);
+        setTitle(R.string.album3);
 
         mWebView = (WebView) findViewById(R.id.webview);
         mWebView.loadUrl("https://sharikovministries.com/%D1%82%D1%8B-%D0%BC%D0%BE%D1%8F-%D0%B6%D0%B8%D0%B7%D0%BD%D1%8C/");
@@ -35,15 +36,15 @@ public class Album3Activity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        if (mWebView.canGoBack()) {
-//            mWebView.goBack();
-//        }else {
-//            super.onBackPressed();
-//        }
-//    }
-//
+    @Override
+    public void onBackPressed() {
+        if (mWebView.canGoBack()) {
+            mWebView.goBack();
+        }else {
+            super.onBackPressed();
+        }
+    }
+
 
     private class CustomWebViewClient extends WebViewClient {
 
@@ -65,5 +66,24 @@ public class Album3Activity extends AppCompatActivity {
             super.onPageFinished(view, url);
 
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mWebView.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mWebView.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mWebView.destroy();
+        mWebView = null;
+        super.onDestroy();
     }
 }

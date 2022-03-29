@@ -33,6 +33,15 @@ public class BibleAudioActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        if (mWebView.canGoBack()) {
+            mWebView.goBack();
+        }else {
+            super.onBackPressed();
+        }
+    }
+
     private class CustomWebViewClient extends WebViewClient {
 
         @Override

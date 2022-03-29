@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -19,17 +20,18 @@ public class GrowFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Toast.makeText(getActivity(),"COMING SOON", Toast.LENGTH_LONG).show();
 
         View v = inflater.inflate(R.layout.fragment_grow, container, false);
-        mWebView = (WebView) v.findViewById(R.id.webview);
-        mWebView.loadUrl("https://www.biblica.com/resources/reading-plans/");
-
-        // Enable Javascript
-        WebSettings webSettings = mWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-
-        // Force links and redirects to open in the WebView instead of in a browser
-        mWebView.setWebViewClient(new WebViewClient());
+//        mWebView = (WebView) v.findViewById(R.id.webview);
+//        mWebView.loadUrl("https://www.biblica.com/resources/reading-plans/");
+//
+//        // Enable Javascript
+//        WebSettings webSettings = mWebView.getSettings();
+//        webSettings.setJavaScriptEnabled(true);
+//
+//        // Force links and redirects to open in the WebView instead of in a browser
+//        mWebView.setWebViewClient(new WebViewClient());
 
         return v;
     }

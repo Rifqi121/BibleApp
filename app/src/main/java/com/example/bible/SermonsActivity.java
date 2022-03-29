@@ -20,6 +20,7 @@ public class SermonsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sermons);
+        setTitle(R.string.sermons);
 
         mWebView = (WebView) findViewById(R.id.webview);
         mWebView.loadUrl("https://www.youtube.com/channel/UCQ_1ClPcArkHtl3DHrvbqXg");

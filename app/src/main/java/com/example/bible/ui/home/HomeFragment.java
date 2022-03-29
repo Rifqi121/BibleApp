@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +21,7 @@ import com.example.bible.Album2Activity;
 import com.example.bible.Album3Activity;
 import com.example.bible.Album4Activity;
 import com.example.bible.BibleAudioActivity;
+import com.example.bible.InstrumentalActivity;
 import com.example.bible.PodcastActivity;
 import com.example.bible.R;
 import com.example.bible.SermonsActivity;
@@ -64,6 +66,7 @@ public class HomeFragment extends Fragment {
                 TextView album2 = bottomSheetDialog.findViewById(R.id.album2);
                 TextView album3 = bottomSheetDialog.findViewById(R.id.album3);
                 TextView album4 = bottomSheetDialog.findViewById(R.id.album4);
+                TextView instrument = bottomSheetDialog.findViewById(R.id.instrument);
 
                 bottomSheetDialog.show();
 
@@ -99,6 +102,14 @@ public class HomeFragment extends Fragment {
                     }
                 });
 
+                instrument.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        music.getContext().startActivity(new Intent(music.getContext(), InstrumentalActivity.class));
+                        bottomSheetDialog.dismiss();
+                    }
+                });
+
             }
         });
 
@@ -112,7 +123,8 @@ public class HomeFragment extends Fragment {
         bible.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bible.getContext().startActivity(new Intent(bible.getContext(), BibleAudioActivity.class));
+                Toast.makeText(getActivity(),"COMING SOON",Toast.LENGTH_LONG).show();
+//                bible.getContext().startActivity(new Intent(bible.getContext(), BibleAudioActivity.class));
             }
         });
 

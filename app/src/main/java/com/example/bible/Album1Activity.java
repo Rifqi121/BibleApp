@@ -10,6 +10,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class Album1Activity extends AppCompatActivity {
 
     private WebView mWebView;
@@ -20,6 +22,7 @@ public class Album1Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_album1);
+        setTitle(R.string.album1);
 
         mWebView = (WebView) findViewById(R.id.webview);
         mWebView.loadUrl("https://sharikovministries.com/%d0%b1%d0%b5%d0%b7-%d1%82%d0%b5%d0%b1%d1%8f-%d1%82%d0%b5%d0%bc%d0%bd%d0%be-2/");
@@ -39,11 +42,12 @@ public class Album1Activity extends AppCompatActivity {
 //    public void onBackPressed() {
 //        if (mWebView.canGoBack()) {
 //            mWebView.goBack();
+//            onPause();
 //        }else {
 //            super.onBackPressed();
 //        }
 //    }
-//
+
 
     private class CustomWebViewClient extends WebViewClient {
 
@@ -65,5 +69,24 @@ public class Album1Activity extends AppCompatActivity {
             super.onPageFinished(view, url);
 
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mWebView.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mWebView.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mWebView.destroy();
+        mWebView = null;
+        super.onDestroy();
     }
 }

@@ -77,4 +77,20 @@
         android:text="@string/album4"
         android:textSize="20sp" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/album4"
+        android:background="@color/black" />
+
+    <TextView
+        android:id="@+id/instrument"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/album4"
+        android:gravity="center_horizontal"
+        android:padding="15dp"
+        android:text="@string/instrument"
+        android:textSize="20sp" />
+
 </RelativeLayout>
