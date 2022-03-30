@@ -45,13 +45,7 @@ public class MainActivity extends AppCompatActivity {
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         MenuItem grow = findViewById(R.id.nav_grow);
-//        grow.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem menuItem) {
-//                Toast.makeText(getBaseContext(), "COMING SOON", Toast.LENGTH_LONG).show();
-//                return true;
-//            }
-//        });
+
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -64,21 +58,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
 
-//        grow.setOnMenuItemClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onItemClick(View view) {
-//                Toast.makeText(getBaseContext(), R.string.album, Toast.LENGTH_LONG);
-//            }
-
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(ge"k",100).show();
-////                bible.getContext().startActivity(new Intent(bible.getContext(), BibleAudioActivity.class));
-//            }
-//        });
-
         Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY, 9);
 //        calendar.set(Calendar.MINUTE, 00);
 
@@ -94,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 if (triggerTime != calendar.getTimeInMillis()) {
                     alarmManager.set(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent);
                 }
-                alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
                 SettingPreferences.setNotifyBibleIsSet(getBaseContext(), true);
             }
         } else {

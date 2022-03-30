@@ -14,11 +14,8 @@ public class BookViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_view);
 
-        String file = getIntent().getExtras().getString("Link");
-        String title = getIntent().getExtras().getString("title");
-
-        setTitle(title);
+        setTitle("Sharikov Songbook");
         PDFView pdfView = findViewById(R.id.pdfView);
-        pdfView.fromAsset(file).load();
+        pdfView.fromAsset("Sharikov Songbook.pdf").load();
     }
 }

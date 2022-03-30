@@ -19,6 +19,7 @@ import com.example.bible.Book;
 import com.example.bible.BookViewActivity;
 import com.example.bible.MyBookListAdapter;
 import com.example.bible.R;
+import com.example.bible.WebViewBookActivity;
 import com.example.bible.databinding.FragmentBookBinding;
 
 import java.util.ArrayList;
@@ -45,7 +46,6 @@ public class BookFragment extends Fragment {
         listView = root.findViewById(R.id.listView);
         bookTitle = getResources().getStringArray(R.array.bookTitle);
         bookLink = getResources().getStringArray(R.array.bookLink);
-//        RelativeLayout layout = root.findViewById(R.id.sharikovSongBook);
 
         for (int i = 0; i < bookTitle.length; i++) {
             Book list = new Book(bookTitle[i], bookLink[i]);
@@ -61,27 +61,17 @@ public class BookFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String list = bookList.get(position).getTitle();
                 String url = bookList.get(position).getLink();
-                Uri link = Uri.parse(url);
-                Intent myIntent = new Intent(getActivity(), BookViewActivity.class);
-                myIntent.putExtra("Link", url);
-                myIntent.putExtra("title", list);
-                startActivity(myIntent);
-//                if (list.equals("Sharikov Songbook")) {
-//                    Intent myIntent = new Intent(getActivity(), BookViewActivity.class);
-//                    startActivity(myIntent);
-//                } else {
-//                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, link);
-//                    startActivity(browserIntent);
-//                }
+                if (list.equals("Sharikov Songbook")) {
+                    Intent myIntent = new Intent(getActivity(), BookViewActivity.class);
+                    startActivity(myIntent);
+                } else {
+                    Intent browserIntent = new Intent(getActivity(), WebViewBookActivity.class);
+                    browserIntent.putExtra("Link", url);
+                    browserIntent.putExtra("title", list);
+                    startActivity(browserIntent);
+                }
             }
         });
-
-//        layout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                layout.getContext().startActivity(new Intent(layout.getContext(), BookViewActivity.class));
-//            }
-//        });
 
         bookViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override

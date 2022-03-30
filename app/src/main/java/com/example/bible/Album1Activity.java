@@ -38,15 +38,15 @@ public class Album1Activity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        if (mWebView.canGoBack()) {
-//            mWebView.goBack();
-//            onPause();
-//        }else {
-//            super.onBackPressed();
-//        }
-//    }
+    @Override
+    public void onBackPressed() {
+        if (mWebView.canGoBack()) {
+            mWebView.goBack();
+            onPause();
+        }else {
+            super.onBackPressed();
+        }
+    }
 
 
     private class CustomWebViewClient extends WebViewClient {

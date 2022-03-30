@@ -10,7 +10,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-public class InstrumentalActivity extends AppCompatActivity {
+public class WebViewBookActivity extends AppCompatActivity {
 
     private WebView mWebView;
     private ProgressBar spinner;
@@ -19,11 +19,13 @@ public class InstrumentalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_instrumental);
-        setTitle(R.string.instrument);
+        setContentView(R.layout.activity_web_view_book);
+        String link = getIntent().getExtras().getString("Link");
+        String title = getIntent().getExtras().getString("title");
 
+        setTitle(title);
         mWebView = (WebView) findViewById(R.id.webview);
-        mWebView.loadUrl("https://sharikovministries.com/instrumentals/");
+        mWebView.loadUrl("https://docs.google.com/viewer?url=" + link);
 
         // Enable Javascript
         WebSettings webSettings = mWebView.getSettings();
@@ -66,24 +68,5 @@ public class InstrumentalActivity extends AppCompatActivity {
             super.onPageFinished(view, url);
 
         }
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mWebView.onPause();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mWebView.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        mWebView.destroy();
-        mWebView = null;
-        super.onDestroy();
     }
 }

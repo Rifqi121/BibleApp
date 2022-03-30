@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_sharikov_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bible">
-        <activity android:name=".InstrumentalActivity"></activity>
+        <activity android:name=".WebViewBookActivity"></activity>
+        <activity android:name=".InstrumentalActivity" />
         <activity android:name=".BibleAudioActivity" />
         <activity android:name=".BookViewActivity" />
         <activity android:name=".Album4Activity" />
